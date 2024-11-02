@@ -41,7 +41,7 @@ jobs:
         id: job_variables
         run: |
           firmware_name="${{ matrix.keyboard }}-${{ matrix.keymap }}-${{ matrix.keyboard_config }}-${{ matrix.compile_with }}"
-          hardware_config_path=$(find BlueMicro_BLE/firmware/keyboards/${{ matrix.keyboard }}/hardware/ -name hardware_config.h | grep ${{ matrix.hardware_config }})
+          hardware_config_path=$(find ${{ matrix.keyboard }}/hardware/ -name hardware_config.h | grep ${{ matrix.hardware_config }})
           echo "firmware-name=$firmware_name" >> $GITHUB_ENV
           echo "hardware-config=$hardware_config_path" >> $GITHUB_ENV
 
