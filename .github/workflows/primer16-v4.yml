@@ -79,12 +79,12 @@ jobs:
           git push
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v1
         with:
           python-version: '3.8'
 
       - name: Setup Arduino CLI
-        uses: arduino/setup-arduino-cli@v4
+        uses: arduino/setup-arduino-cli@v1.1.1
 
       - name: Install BSP and Libraries
         env:
@@ -119,7 +119,7 @@ jobs:
           python $HOME/$BSP_PATH/$BSP_VERSION/tools/uf2conv/uf2conv.py ./${{ env.firmware-name }}/build/${{ env.firmware-name }}.ino.hex -c -f 0xADA52840 -o ./${{ env.firmware-name }}/build/${{ env.firmware-name }}.ino.uf2
 
       - name: Archive artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v2
         with:
           name: ${{ env.firmware-name }}
           path: |
